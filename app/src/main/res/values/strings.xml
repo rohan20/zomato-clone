@@ -2,4 +2,5 @@
     <string name="app_name">Zomato Clone</string>
     <string name="filter">Filter</string>
     <string name="search">Search</string>
+    <string name="search_hint">Enter search text here...</string>
 </resources>
