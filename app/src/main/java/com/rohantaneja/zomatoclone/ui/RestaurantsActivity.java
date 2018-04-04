@@ -1,7 +1,9 @@
-package com.rohantaneja.zomatoclone;
+package com.rohantaneja.zomatoclone.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.rohantaneja.zomatoclone.R;
 
 public class RestaurantsActivity extends AppCompatActivity {
 
