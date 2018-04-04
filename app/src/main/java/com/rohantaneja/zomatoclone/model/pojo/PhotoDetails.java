@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by rohantaneja on 04/04/18.
  */
 
-class PhotoDetails {
+public class PhotoDetails {
 
     @SerializedName("url")
     @Expose

@@ -2,6 +2,7 @@ package com.rohantaneja.zomatoclone.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -14,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rohantaneja.zomatoclone.R;
+import com.rohantaneja.zomatoclone.adapter.RestaurantsAdapter;
+import com.rohantaneja.zomatoclone.model.pojo.Restaurant;
 import com.rohantaneja.zomatoclone.model.pojo.RestaurantWrapper;
 import com.rohantaneja.zomatoclone.model.pojo.SearchRestaurantsResponse;
 import com.rohantaneja.zomatoclone.network.RetrofitAdapter;
 import com.rohantaneja.zomatoclone.util.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,6 +33,8 @@ public class RestaurantsActivity extends AppCompatActivity {
 
     private static final String TAG = "RestaurantsActivity";
     private EditText searchRestaurantEditText;
+    private List<RestaurantWrapper> restaurantList;
+    private RestaurantsAdapter restaurantsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,8 @@ public class RestaurantsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
 
         searchRestaurantEditText = findViewById(R.id.search_edit_text);
+        restaurantList = new ArrayList<>();
+        setupRestaurantsRecyclerView();
 
     }
 
@@ -59,6 +67,13 @@ public class RestaurantsActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setupRestaurantsRecyclerView() {
+        RecyclerView restaurantsRecyclerVie = findViewById(R.id.restaurants_recycler_view);
+        restaurantsAdapter = new RestaurantsAdapter(this);
+        restaurantsAdapter.updateRestaurantsList(restaurantList);
+        restaurantsRecyclerVie.setAdapter(restaurantsAdapter);
     }
 
     private void showSearchBar() {
@@ -118,5 +133,7 @@ public class RestaurantsActivity extends AppCompatActivity {
         Log.d(TAG, restaurants.get(0).getRestaurant().getName());
         Log.d(TAG, restaurants.get(1).getRestaurant().getName());
         Log.d(TAG, restaurants.get(2).getRestaurant().getName());
+
+        restaurantsAdapter.updateRestaurantsList(restaurants);
     }
 }

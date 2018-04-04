@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.rohantaneja.zomatoclone.R;
 import com.rohantaneja.zomatoclone.adapter.viewholder.RestaurantViewHolder;
 import com.rohantaneja.zomatoclone.model.pojo.Restaurant;
+import com.rohantaneja.zomatoclone.model.pojo.RestaurantWrapper;
 
 import java.util.List;
 
@@ -18,11 +19,15 @@ import java.util.List;
 public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantViewHolder> {
 
     private final Context context;
-    private List<Restaurant> restaurantList;
+    private List<RestaurantWrapper> restaurantList;
 
-    public RestaurantsAdapter(List<Restaurant> restaurantList, Context context) {
-        this.restaurantList = restaurantList;
+    public RestaurantsAdapter(Context context) {
         this.context = context;
+    }
+
+    public void updateRestaurantsList(List<RestaurantWrapper> restaurantList) {
+        this.restaurantList = restaurantList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,8 +40,8 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantViewHolde
 
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
-        Restaurant item = restaurantList.get(position);
-        //TODO Fill in your logic for binding the view.
+        RestaurantWrapper restaurant = restaurantList.get(position);
+        holder.bindData(restaurant);
     }
 
     @Override

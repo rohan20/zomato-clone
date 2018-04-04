@@ -9,7 +9,7 @@ import java.util.List;
  * Created by rohantaneja on 04/04/18.
  */
 
-class Event {
+public class Event {
 
     @SerializedName("event_id")
     @Expose
