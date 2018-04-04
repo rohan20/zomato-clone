@@ -6,5 +6,5 @@ package com.rohantaneja.zomatoclone.util;
 
 public class Constants {
 
-    public static final String RESTAURANTS_BASE_URL = "https://developers.zomato.com/api/v2.1/search";
+    public static final String RESTAURANTS_BASE_URL = "https://developers.zomato.com/api/v2.1/";
 }
