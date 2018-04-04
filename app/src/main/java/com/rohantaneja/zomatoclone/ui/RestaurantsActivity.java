@@ -1,5 +1,6 @@
 package com.rohantaneja.zomatoclone.ui;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,6 +96,11 @@ public class RestaurantsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            inputMethodManager.hideSoftInputFromWindow(searchRestaurantEditText.getWindowToken(), 0);
+        }
     }
 
     private void filterRestaurantResults() {

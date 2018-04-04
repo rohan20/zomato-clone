@@ -28,6 +28,6 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     public void bindData(RestaurantWrapper restaurant) {
         restaurantNameTextView.setText(restaurant.getRestaurant().getName());
         restaurantAddressTextView.setText(restaurant.getRestaurant().getName());
-        restaurantRatingTextView.setText(restaurant.getRestaurant().getUserRating().getRatingText());
+        restaurantRatingTextView.setText(restaurant.getRestaurant().getUserRating().getAggregateRating());
     }
 }
