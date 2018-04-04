@@ -5,4 +5,7 @@ package com.rohantaneja.zomatoclone.network;
  */
 
 public interface ZomatoAPI {
+
+
+
 }
