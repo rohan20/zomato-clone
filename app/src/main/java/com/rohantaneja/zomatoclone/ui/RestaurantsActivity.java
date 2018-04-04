@@ -89,18 +89,20 @@ public class RestaurantsActivity extends AppCompatActivity {
 
                     String searchQuery = searchRestaurantEditText.getText().toString();
 
-                    if (!searchQuery.isEmpty())
+                    if (!searchQuery.isEmpty()) {
                         searchRestaurants(searchQuery);
+                        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (inputMethodManager != null) {
+                            inputMethodManager.hideSoftInputFromWindow(searchRestaurantEditText.getWindowToken(), 0);
+                        }
+                    } else {
+                        Toast.makeText(RestaurantsActivity.this, "Cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
                     return true;
                 }
                 return false;
             }
         });
-
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null) {
-            inputMethodManager.hideSoftInputFromWindow(searchRestaurantEditText.getWindowToken(), 0);
-        }
     }
 
     private void filterRestaurantResults() {
@@ -137,9 +139,9 @@ public class RestaurantsActivity extends AppCompatActivity {
             return;
         }
 
-        Log.d(TAG, restaurants.get(0).getRestaurant().getName());
-        Log.d(TAG, restaurants.get(1).getRestaurant().getName());
-        Log.d(TAG, restaurants.get(2).getRestaurant().getName());
+//        Log.d(TAG, restaurants.get(0).getRestaurant().getName());
+//        Log.d(TAG, restaurants.get(1).getRestaurant().getName());
+//        Log.d(TAG, restaurants.get(2).getRestaurant().getName());
 
         restaurantsAdapter.updateRestaurantsList(restaurants);
     }
